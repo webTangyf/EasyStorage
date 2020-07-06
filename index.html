@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no" />
+  <meta content="email=no" name="format-detection" />
+  <title>esat-storage</title>
+  <script src="./index.js"></script>
+  <style>
+    html {
+      height: 100vh;
+      background-color: aliceblue;
+    }
+    li {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h3>EsayStorage</h3>
+    <ul>
+
+    </ul>
+  </div>
+  <script>
+    window.onload = () => {
+      var easyStorage = new EasyStorage({
+        TIMEOUT: EasyStorage.DATE.SECUND
+      });
+      // console.log(easyStorage)
+      var test = '0123456789';
+      var add = function(num) {
+          num += num;
+          if(num.length == 10240) {
+              test = num;
+              return;
+          }
+          add(num);
+      }
+      add(test);
+      var sum = test;
+      var times = 0
+      console.log(sum.length / 1024 + 'KB');
+      // easyStorage.set(`test${times}`, sum);
+      //   var show = setInterval(function(){
+      //       times++ 
+      //       try {
+      //           easyStorage.set(`test${times}`, sum);
+      //           console.log(sum.length * times / 1024 + 'KB');
+      //       } catch(e) {
+      //           console.log(e)
+      //           clearInterval(show);
+      //       }
+      //   }, 0.1)
+      }
+  </script>
+</body>
+
+</html>
