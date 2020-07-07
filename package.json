@@ -1,7 +1,7 @@
 {
-  "name": "na-jssdk",
+  "name": "easy-storage",
   "version": "0.0.1",
-  "description": "esayStorage",
+  "description": "EasyStorage",
   "main": "index.js",
   "scripts": {
     "serve": "node server.js",

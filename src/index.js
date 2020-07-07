@@ -25,17 +25,15 @@ let CACHE_OPTION = {
   // 存储方式, 只支持 localStorage, sessionStorage
   LOCAL_METHODS_LIST: ['sessionStorage', 'localStorage'],
   // 默认存储头
-  defaultPrefix: '__EsayStorage__'
+  DEFAULT_PREFIX: '__EsayStorage__'
 }
 
 
 
 /**
- *
  * 格式化本地数据
  * @param {*} data
  * @returns 格式化完成的数据
- * @memberof System
  */
 const formatSaveData = (data) => {
   let type = getType(data)
@@ -61,7 +59,7 @@ const formatSaveData = (data) => {
  * @param  {String} key 储存的key值
  */
 const formatStorageKey = (key) => {
-  return `${CACHE_OPTION.defaultPrefix}${key}`
+  return `${CACHE_OPTION.DEFAULT_PREFIX}${key}`
 }
 
 /**
@@ -76,9 +74,9 @@ const clearOutTimeMemory = (methods) => {
     throw new Error('EsayStorage no suppor this methods')
   }
   Object.keys(window[methods])
-    .filter(key => key.startsWith(CACHE_OPTION.defaultPrefix))
+    .filter(key => key.startsWith(CACHE_OPTION.DEFAULT_PREFIX))
     .forEach(key => {
-      const originKey = key.replace(CACHE_OPTION.defaultPrefix, '')
+      const originKey = key.replace(CACHE_OPTION.DEFAULT_PREFIX, '')
       const isSurvival = checkDataSurvival(key, methods)
       if (!isSurvival) {
         if (CACHE_OPTION.DEBUG) {
@@ -90,7 +88,6 @@ const clearOutTimeMemory = (methods) => {
 }
 
 /**
- *
  * 将数据存取在本地，并且设置超时
  * @param {String} key  存储的键值
  * @param {*} data 需要存储的数据
@@ -153,7 +150,6 @@ const set = (key, data, handleOption = {}) => {
  * @param {String} key
  * @param  {} methods='localStorage'
  * @return {Boolean} 是否还有有效
- * @memberof System
  */
 const checkDataSurvival = (key, methods) => {
   try {
@@ -185,7 +181,6 @@ const checkDataSurvival = (key, methods) => {
 }
 
 /**
- *
  * 获取数据
  * @param {String} key 存储的key
  * @param {string}  methods='localStorage'
@@ -236,7 +231,7 @@ const remove = (key, methods) => {
 const clear = (methods) => {
   methods = methods || CACHE_OPTION.DEFAULT_METHOD
   Object.keys(window[methods])
-  .filter(key => key.startsWith(CACHE_OPTION.defaultPrefix))
+  .filter(key => key.startsWith(CACHE_OPTION.DEFAULT_PREFIX))
   .forEach(key => {
     window[methods].removeItem(key)
   })

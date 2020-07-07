@@ -27,36 +27,9 @@
     </ul>
   </div>
   <script>
-    window.onload = () => {
-      var easyStorage = new EasyStorage({
-        TIMEOUT: EasyStorage.DATE.SECUND
-      });
-      // console.log(easyStorage)
-      var test = '0123456789';
-      var add = function(num) {
-          num += num;
-          if(num.length == 10240) {
-              test = num;
-              return;
-          }
-          add(num);
-      }
-      add(test);
-      var sum = test;
-      var times = 0
-      console.log(sum.length / 1024 + 'KB');
-      // easyStorage.set(`test${times}`, sum);
-      //   var show = setInterval(function(){
-      //       times++ 
-      //       try {
-      //           easyStorage.set(`test${times}`, sum);
-      //           console.log(sum.length * times / 1024 + 'KB');
-      //       } catch(e) {
-      //           console.log(e)
-      //           clearInterval(show);
-      //       }
-      //   }, 0.1)
-      }
+    var easyStorage = new EasyStorage({
+      TIMEOUT: EasyStorage.DATE.SECUND
+    });
   </script>
 </body>
 
